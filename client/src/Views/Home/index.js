@@ -1,14 +1,15 @@
 import React from 'react';
-// import Carousel from '../../Components/Carousel/Carousel';
+import GuestHeader from '../../Components/GuestHeader';
 
-const HomeView = () => {
+const Home = () => {
 	return (
 		<div className='home-view-container'>
 			<div>
-				Hello Home.
+				<GuestHeader />
+
 			</div>
 		</div>
 	);
 };
 
-export default HomeView;
+export default Home;

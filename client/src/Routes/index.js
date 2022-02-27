@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import HomeView from '../Views/Home';
+import Home from '../Views/Home';
+import Login from '../Views/Login';
 // import DashView from './Views/DashView/DashView';
 // import AdminLoginView from './Views/AdminView/AdminLoginView';
 // import AdminDashboard from './Views/AdminView/AdminDashboard';
@@ -14,12 +15,12 @@ import HomeView from '../Views/Home';
 const CheckAuth = ({ children }) => {
 	let isAuthenticated = true;
 
-	console.log("CheckAuth function called.")
-	console.log("children: " + children );
+	// console.log("CheckAuth function called.")
+	// console.log("children: " + children );
 
 
 	// if (localStorage.getItem('currentUser')) isAuthenticated = true;
-	return isAuthenticated ? children : <Navigate to='/' />;
+	return isAuthenticated ? children : <Navigate to='/login' />;
 };
 
 // const RequireAdminAuth = ({ children }) => {
@@ -35,11 +36,20 @@ const MyRoutes = () => {
 				path='/'
 				element={
 					<CheckAuth>
-						<HomeView />
+						<Home />
 					</CheckAuth>
 				}
 				exact
 			/>
+
+			<Route
+				path='/login'
+				element={
+					<Login />
+				}
+			>
+
+			</Route>
 			
 		</Routes>
 	);
