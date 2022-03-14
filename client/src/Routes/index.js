@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../Views/Home';
 import Login from '../Views/Login';
+import GuestLayout from '../Views/Layouts/GuestLayout';
 // import DashView from './Views/DashView/DashView';
 // import AdminLoginView from './Views/AdminView/AdminLoginView';
 // import AdminDashboard from './Views/AdminView/AdminDashboard';
@@ -31,27 +32,28 @@ const CheckAuth = ({ children }) => {
 
 const MyRoutes = () => {
 	return (
-		<Routes>
-			<Route
-				path='/'
-				element={
-					<CheckAuth>
-						<Home />
-					</CheckAuth>
-				}
-				exact
-			/>
+		<GuestLayout>
+			<Routes>
+				<Route
+					path='/'
+					element={
+						<CheckAuth>
+							<Home />
+						</CheckAuth>
+					}
+					exact
+				/>
+				<Route
+					path='/login'
+					element={
+						<Login />
+					}
+				>
 
-			<Route
-				path='/login'
-				element={
-					<Login />
-				}
-			>
-
-			</Route>
-			
-		</Routes>
+				</Route>
+				
+			</Routes>
+		</GuestLayout>
 	);
 };
 
