@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../Assets/images/logo2.png';
 import './styles.css'
+import Footer from '../../../Components/Footer';
 
 const GuestLayout = ({ children }) => {
     return (
@@ -9,9 +10,9 @@ const GuestLayout = ({ children }) => {
             <div className="header-guest">
                 <nav className="navbar fixed-top navbar-expand-lg navbar-light p-3">
                     <div className="container-fluid">
-                        
-                        <a className="navbar-brand" href="#">
-                            <img src={logo} className="logo1"></img>
+
+                        <a className="navbar-brand">
+                            <img src={logo} className="logo1" alt='logo'></img>
                         </a>
 
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,30 +20,17 @@ const GuestLayout = ({ children }) => {
                         </button>
 
                         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div className="navbar-nav">
-                                <a className="nav-link nav-link-left">
-                                    <Link to='/'>Home</Link>
-                                </a>
-                                <a className="nav-link nav-link-left">
-                                    <Link to='/'>Projects</Link>
-                                </a>
-                                <a className="nav-link nav-link-left">
-                                    <Link to='/login'>About Us</Link>
-                                </a>
-                                <a className="nav-link nav-link-left">
-                                    <Link to='/login'>Contact Us</Link>
-                                </a>
-                                <a className="nav-link nav-link-left">
-                                    <Link to='/login'>Blog</Link>
-                                </a>
-                                <a className="nav-link nav-link-left">
-                                    <Link to='/login'>Offers</Link>
-                                </a>
-                                <a className="nav-link nav-link-left">
-                                    <Link to='/login'>Reviews</Link>
-                                </a>
-                                
+                            <div className="navbar-nav w-100">
+                                <Link className='nav-link nav-link-left' to='/'>Home</Link>
+                                <Link className='nav-link nav-link-left' to='/'>Projects</Link>
+                                <Link className='nav-link nav-link-left' to='/'>About Us</Link>
+                                <Link className='nav-link nav-link-left' to='/'>Contact Us</Link>
+                                <Link className='nav-link nav-link-left' to='/'>Blog</Link>
+                                <Link className='nav-link nav-link-left' to='/'>Offers</Link>
+                                <Link className='nav-link nav-link-left' to='/'>Reviews</Link>
+                                <Link className='nav-link nav-link-right ms-auto' to='/login'>Login</Link>
                             </div>
+                            
                         </div>
                     </div>
                 </nav>
@@ -50,9 +38,9 @@ const GuestLayout = ({ children }) => {
             <div className="body-guest">
                 {children}
             </div>
-            <div className="footer-guest">
-                Footer here.
-            </div>
+            <Footer/>
+
+            
 
         </div>
     );

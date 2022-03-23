@@ -1,3 +1,11 @@
-.testingClass {
-  color:red,
+
+#login-form-section {
+  background-image: url('../../Assets/images/carousel-2.jpg');
+  min-height: 700px;
+  background-position: center;
+  background-size: contain;
+}
+
+#login-form {
+  background-color: #a42907c7;
 }

@@ -48,6 +48,7 @@ const MyRoutes = () => {
 					element={
 						<Login />
 					}
+					exact
 				>
 
 				</Route>
