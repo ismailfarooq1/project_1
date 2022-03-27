@@ -9,8 +9,9 @@ import { AiOutlineExclamationCircle } from 'react-icons/ai';
 
 const LoginView = () => {
 
-	const handleLogin = () => {
-		console.log('handleLogin');
+	const handleLogin = (data) => {
+		// console.log('handleLogin');
+		// console.log(data);
 	}
 
 
@@ -45,24 +46,36 @@ const LoginView = () => {
 									>
 										<h2 className='text-dark'>Cube Marketing - Login</h2>
 										<div className='form-group'>
-											<Field
-												className="form-control my-3"
-												name="email"
-												required value={values.name}
-												type="email"
-												placeholder="Email"
-											/>
-											<ErrorMessage name='email' component={AiOutlineExclamationCircle} className=""></ErrorMessage>
+											<div className='row'>
+												<div className='col-11'>
+													<Field
+														className="form-control my-3"
+														name="email"
+														required value={values.name}
+														type="email"
+														placeholder="Email"
+													/>
+												</div>
+												<div className='col-1 d-flex align-items-center'>
+													<ErrorMessage name='email' component={AiOutlineExclamationCircle} className=""></ErrorMessage>
+												</div>
+											</div>
 										</div>
 
-
-										<Field
-											className="form-control mb-3"
-											name="password"
-											required value={values.password}
-											type="password"
-											placeholder="Password"
-										/>
+										<div className='row'>
+											<div className='col-11'>
+												<Field
+													className="form-control mb-3"
+													name="password"
+													required value={values.password}
+													type="password"
+													placeholder="Password"
+												/>
+											</div>
+											<div className='col-1 d-flex align-items-center'>
+												<ErrorMessage name='password' component={AiOutlineExclamationCircle} className=""></ErrorMessage>
+											</div>
+										</div>
 										<button type='submit' className='btn btn-primary'>Login</button>
 									</Form>
 								);
