@@ -6,12 +6,14 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { LoginValidation } from '../../Validations.js';
 import logo from '../../Assets/images/logo2.png';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
+import { login } from '../../Redux/Actions/Auth';
 
 const LoginView = () => {
 
+	const dispatch = useDispatch();
+
 	const handleLogin = (data) => {
-		// console.log('handleLogin');
-		// console.log(data);
+		dispatch(login(data));
 	}
 
 
@@ -21,17 +23,11 @@ const LoginView = () => {
 				<div className='background-image'></div>
 				<div className='content'>
 					<div className='col-md-5 offset-md-7 col-12'>
-						{/* <form onSubmit={submitLogin} id='login-form' className='border-secondary rounded p-5 me-md-3'>
-						<h2 className='text-white'>Cube Marketing - Login</h2>
-						<input id='email' type='email' placeholder='Email' className='form-control my-3'/>
-						<input id='password' type='password' placeholder='Password' className='form-control mb-3'/>
-						<button type='submit' className='btn btn-primary'>Login</button>
-					</form> */}
-
 						<Formik
 							initialValues={{
 								email: '',
 								password: '',
+								password_confirmation: '',
 							}}
 							validationSchema={LoginValidation}
 							onSubmit={data => {
@@ -74,6 +70,21 @@ const LoginView = () => {
 											</div>
 											<div className='col-1 d-flex align-items-center'>
 												<ErrorMessage name='password' component={AiOutlineExclamationCircle} className=""></ErrorMessage>
+											</div>
+										</div>
+
+										<div className='row'>
+											<div className='col-11'>
+												<Field
+													className="form-control mb-3"
+													name="password_confirmation"
+													required value={values.password_confirmation}
+													type="password"
+													placeholder="Confirm Password"
+												/>
+											</div>
+											<div className='col-1 d-flex align-items-center'>
+												<ErrorMessage name='password_confirmation' component={AiOutlineExclamationCircle} className=""></ErrorMessage>
 											</div>
 										</div>
 										<button type='submit' className='btn btn-primary'>Login</button>

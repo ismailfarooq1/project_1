@@ -3,6 +3,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../Views/Home';
 import Login from '../Views/Login';
 import GuestLayout from '../Views/Layouts/GuestLayout';
+import { useSelector } from 'react-redux';
+import AdminLayout from '../Views/Layouts/AdminLayout';
+import AdminHome from '../Views/AdminHome';
 // import DashView from './Views/DashView/DashView';
 // import AdminLoginView from './Views/AdminView/AdminLoginView';
 // import AdminDashboard from './Views/AdminView/AdminDashboard';
@@ -14,9 +17,10 @@ import GuestLayout from '../Views/Layouts/GuestLayout';
 // };
 
 const CheckAuth = ({ children }) => {
+	// let isAuthenticated = useSelector((state) => state.adminData);
 	let isAuthenticated = true;
 
-	// console.log("CheckAuth function called.")
+	console.log("isAuthenticated: " + isAuthenticated);
 	// console.log("children: " + children );
 
 
@@ -32,29 +36,44 @@ const CheckAuth = ({ children }) => {
 
 const MyRoutes = () => {
 	return (
-		<GuestLayout>
-			<Routes>
-				<Route
-					path='/'
-					element={
-						<CheckAuth>
+		<div>
+			<GuestLayout>
+				<Routes>
+					<Route
+						path='/'
+						element={
 							<Home />
-						</CheckAuth>
-					}
-					exact
-				/>
-				<Route
-					path='/login'
-					element={
-						<Login />
-					}
-					exact
-				>
+						}
+						exact
+					/>
+					<Route
+						path='/login'
+						element={
+							<Login />
+						}
+						exact
+					>
 
-				</Route>
-				
-			</Routes>
-		</GuestLayout>
+					</Route>
+
+				</Routes>
+			</GuestLayout>
+			<CheckAuth>
+				<AdminLayout>
+					<Routes>
+						<Route
+							path='/adminHome'
+							element={
+								<AdminHome />
+							}
+							exact
+						/>
+					</Routes>
+				</AdminLayout>
+			</CheckAuth>
+
+		</div>
+
 	);
 };
 
