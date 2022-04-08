@@ -2,10 +2,6 @@
 
 namespace App\Http;
 
-// use App\Http\Middleware\ForceJsonResponse;
-// use App\Http\Middleware\Cors;
-
-use App\Http\Middleware\ForceJsonResponse;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -25,8 +21,6 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Http\Middleware\ForceJsonResponse::class,
-        \App\Http\Middleware\Cors::class,
     ];
 
     /**
@@ -69,7 +63,5 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'json.response' => \App\Http\Middleware\ForceJsonResponse::class,
-        'cors' => \App\Http\Middleware\Cors::class,
     ];
 }
