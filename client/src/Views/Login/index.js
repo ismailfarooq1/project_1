@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import bgImage from '../../Assets/images/carousel-2.jpg'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { LoginValidation } from '../../Validations.js';
 import logo from '../../Assets/images/logo2.png';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { login } from '../../Redux/Actions/Auth';
+import { Navigate } from 'react-router';
+import { index } from '../../Redux/Actions/Post';
 
 const LoginView = () => {
 
@@ -14,6 +16,10 @@ const LoginView = () => {
 
 	const handleLogin = (data) => {
 		dispatch(login(data));
+	}
+
+	const testButton = () => {
+		dispatch(index());
 	}
 
 
@@ -27,7 +33,6 @@ const LoginView = () => {
 							initialValues={{
 								email: '',
 								password: '',
-								password_confirmation: '',
 							}}
 							validationSchema={LoginValidation}
 							onSubmit={data => {
@@ -72,21 +77,6 @@ const LoginView = () => {
 												<ErrorMessage name='password' component={AiOutlineExclamationCircle} className=""></ErrorMessage>
 											</div>
 										</div>
-
-										<div className='row'>
-											<div className='col-11'>
-												<Field
-													className="form-control mb-3"
-													name="password_confirmation"
-													required value={values.password_confirmation}
-													type="password"
-													placeholder="Confirm Password"
-												/>
-											</div>
-											<div className='col-1 d-flex align-items-center'>
-												<ErrorMessage name='password_confirmation' component={AiOutlineExclamationCircle} className=""></ErrorMessage>
-											</div>
-										</div>
 										<button type='submit' className='btn btn-primary'>Login</button>
 									</Form>
 								);
@@ -94,6 +84,7 @@ const LoginView = () => {
 						</Formik>
 					</div>
 				</div>
+				<button className='btn btn-secondary' onClick={testButton}>Hello kitty</button>
 
 			</div>
 		</div>
