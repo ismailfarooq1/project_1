@@ -7,19 +7,31 @@ import { LoginValidation } from '../../Validations.js';
 import logo from '../../Assets/images/logo2.png';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { login } from '../../Redux/Actions/Auth';
-import { Navigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 import { index } from '../../Redux/Actions/Post';
+import store from '../../Redux';
 
 const LoginView = () => {
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	useSelector((state) => {
+		console.log(state);
+		return state;
+	});
 
 	const handleLogin = (data) => {
 		dispatch(login(data));
+		// <Navigate to='/adminHome' />
+		// navigate('/adminHome');
 	}
 
 	const testButton = () => {
-		dispatch(index());
+		// dispatch(index());
+		// store
+		// console.log(store.getState());
+
 	}
 
 
