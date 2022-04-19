@@ -1,5 +1,5 @@
 // Auth types
-export const LOGIN = 'LOGIN';
+export const LOGIN = 'admin/login';
 export const LOGOUT = 'LOGOUT';
 
 

@@ -9,24 +9,15 @@ import AdminHome from '../Views/AdminHome';
 import store from '../Redux';
 
 const CheckAuth = ({ children }) => {
-
-
-	console.log(store.getState());
-	useSelector((state) => {
-		console.log(state);
+	let isAuthenticated = useSelector((state) => {
 		return state;
 	});
 
-	let isAuthenticated = true;
-	console.log("isAuthenticated: " + isAuthenticated);
-	return isAuthenticated ? children : <Navigate to='/login' />;
-};
+	console.log('isAuthenticated')
+	console.log(isAuthenticated)
 
-// const RequireAdminAuth = ({ children }) => {
-// 	let isAuthenticated = false;
-// 	if (sessionStorage.getItem('currentAdmin')) isAuthenticated = true;
-// 	return isAuthenticated ? children : <Navigate to='/admin-login' />;
-// };
+	return (isAuthenticated.Auth.isAuthed) ? children : <Navigate to='/login' />;
+};
 
 const MyRoutes = () => {
 	return (

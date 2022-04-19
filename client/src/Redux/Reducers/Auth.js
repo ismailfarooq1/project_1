@@ -3,10 +3,8 @@ import { LOGIN } from "../Types";
 export default (state = {}, action) => {
     switch (action.type) {
         case 'admin/login':
-            // console.log("ACTION LOGIN");
-            return { ...state, adminData: action.payload };
+            return { ...state, isAuthed: true, token: action.payload.token };
         default:
-            // console.log(action.type);
             return state;
     }
 }

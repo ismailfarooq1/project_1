@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../Assets/images/logo2.png';
 import './styles.css'
 import Footer from '../../../Components/Footer';
+import { useSelector } from 'react-redux';
 
 const GuestLayout = ({ children }) => {
+
+    const [isAuthed, setIsAuthed] = useState(false);
+
+    let isAuthenticated = useSelector((state) => {
+        return state;
+    });
+
+    useEffect(() => {
+        setIsAuthed(() => {
+            return isAuthenticated.Auth.isAuthed;
+        });
+    })
+
     return (
         <div className="guest-layout">
             <div className="header-guest">
@@ -28,9 +42,11 @@ const GuestLayout = ({ children }) => {
                                 <Link className='nav-link nav-link-left' to='/'>Blog</Link>
                                 <Link className='nav-link nav-link-left' to='/'>Offers</Link>
                                 <Link className='nav-link nav-link-left' to='/'>Reviews</Link>
-                                <Link className='nav-link nav-link-right ms-auto' to='/login'>Login</Link>
+
+                                {(isAuthed) ? <Link className='nav-link nav-link-right ms-auto' to='/adminHome'>Admin Home</Link> : <Link className='nav-link nav-link-right ms-auto' to='/login'>Login</Link>}
+
                             </div>
-                            
+
                         </div>
                     </div>
                 </nav>
@@ -38,9 +54,9 @@ const GuestLayout = ({ children }) => {
             <div className="body-guest">
                 {children}
             </div>
-            <Footer/>
+            <Footer />
 
-            
+
 
         </div>
     );

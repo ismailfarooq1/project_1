@@ -16,24 +16,13 @@ const LoginView = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	useSelector((state) => {
-		console.log(state);
-		return state;
-	});
-
 	const handleLogin = (data) => {
-		dispatch(login(data));
-		// <Navigate to='/adminHome' />
-		// navigate('/adminHome');
+		dispatch(login(data))
+			.then(() => {
+				// change to useCallBack();
+				navigate('/adminHome');
+			});
 	}
-
-	const testButton = () => {
-		// dispatch(index());
-		// store
-		// console.log(store.getState());
-
-	}
-
 
 	return (
 		<div id='login-view'>
@@ -96,8 +85,6 @@ const LoginView = () => {
 						</Formik>
 					</div>
 				</div>
-				<button className='btn btn-secondary' onClick={testButton}>Hello kitty</button>
-
 			</div>
 		</div>
 	);
