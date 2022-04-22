@@ -10,3 +10,17 @@ export const login = (data) => {
         })
     }
 }
+
+export const logout = () => {
+
+    // console.log('logout axiosConstants.headers');
+    console.log(axiosConstants.headers);
+
+    return async (dispatch) => {
+        const response = await axios.get(axiosConstants.basePath + 'api/logout', { headers: axiosConstants.headers })
+        dispatch({
+            type: 'admin/logout',
+            payload: response.data
+        })
+    }
+}

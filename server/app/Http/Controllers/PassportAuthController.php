@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class PassportAuthController extends Controller
@@ -53,5 +54,18 @@ class PassportAuthController extends Controller
         } else {
             return response()->json(['error' => 'No user with this email'], 404);
         }
+    }
+
+    /**
+     * Login
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+
+        // return $user;
+        return response()->json(['user' => true], 200);
+        // $user->revoke();
+        // return true;
     }
 }

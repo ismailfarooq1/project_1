@@ -1,14 +1,20 @@
 import axios from "axios";
-import { axiosConstants, headers } from "../../Config/constants";
+import { axiosConstants } from "../../Config/constants";
 
-export const index = async (id) => {
-    if (id) {
-        console.log('has ID');
-    } else {
-        const posts = await axios.get(axiosConstants.basePath + 'api/posts', { headers: axiosConstants.headers });
-        return {
+export const index = (id) => {
+    // if (id) {
+    //     console.log('has ID');
+    // } else {
+
+    console.log('POST axiosConstants.headers');
+    console.log(axiosConstants.headers);
+    return async (dispatch) => {
+        const response = await axios.get(axiosConstants.basePath + 'api/posts', { headers: axiosConstants.headers });
+
+        dispatch({
             type: 'admin/posts',
-            payload: posts
-        }
+            payload: response.data
+        })
     }
+    // }
 }

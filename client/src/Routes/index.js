@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import AdminLayout from '../Views/Layouts/AdminLayout';
 import AdminHome from '../Views/AdminHome';
 import store from '../Redux';
+import Cookies from 'universal-cookie';
 
 const CheckAuth = ({ children }) => {
 	let isAuthenticated = useSelector((state) => {

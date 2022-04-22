@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
-import bgImage from '../../Assets/images/carousel-2.jpg'
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { LoginValidation } from '../../Validations.js';
-import logo from '../../Assets/images/logo2.png';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { login } from '../../Redux/Actions/Auth';
 import { Navigate, useNavigate } from 'react-router';
-import { index } from '../../Redux/Actions/Post';
-import store from '../../Redux';
 
 const LoginView = () => {
 
@@ -19,7 +15,6 @@ const LoginView = () => {
 	const handleLogin = (data) => {
 		dispatch(login(data))
 			.then(() => {
-				// change to useCallBack();
 				navigate('/adminHome');
 			});
 	}

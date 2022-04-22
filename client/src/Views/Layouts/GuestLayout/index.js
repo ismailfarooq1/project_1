@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import logo from '../../../Assets/images/logo2.png';
 import './styles.css'
 import Footer from '../../../Components/Footer';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../../Redux/Actions/Auth'
+import Cookies from 'universal-cookie';
 
 const GuestLayout = ({ children }) => {
 
     const [isAuthed, setIsAuthed] = useState(false);
+    const dispatch = useDispatch();
 
     let isAuthenticated = useSelector((state) => {
         return state;
@@ -18,6 +21,21 @@ const GuestLayout = ({ children }) => {
             return isAuthenticated.Auth.isAuthed;
         });
     })
+
+    const logoutButton = () => {
+
+        // let cookies = new Cookies();
+        // cookies.remove('authToken');
+
+        console.log('Logout');
+        dispatch(logout())
+
+
+
+        // .then(() => {
+        //     // navigate('/');
+        // });
+    }
 
     return (
         <div className="guest-layout">
@@ -44,6 +62,7 @@ const GuestLayout = ({ children }) => {
                                 <Link className='nav-link nav-link-left' to='/'>Reviews</Link>
 
                                 {(isAuthed) ? <Link className='nav-link nav-link-right ms-auto' to='/adminHome'>Admin Home</Link> : <Link className='nav-link nav-link-right ms-auto' to='/login'>Login</Link>}
+                                {(isAuthed) ? <Link className='nav-link nav-link-right ms-auto' to='/' onClick={logoutButton}>Logout</Link> : ''}
 
                             </div>
 
