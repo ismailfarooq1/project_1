@@ -1,11 +1,15 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import Cookies from 'universal-cookie';
+import { useDispatch, useSelector } from 'react-redux';
+// import Cookies from 'universal-cookie';
 import { index } from '../../Redux/Actions/Post';
 
 const AdminHome = ({ children }) => {
 
 	const dispatch = useDispatch();
+
+	let isAuthenticated = useSelector((state) => {
+		return state;
+	});
 
 	const getPosts = () => {
 		console.log('posts');
@@ -13,8 +17,8 @@ const AdminHome = ({ children }) => {
 	}
 
 	const checkToken = () => {
-		let cookies = new Cookies();
-		console.log(cookies.get('authToken'));
+		console.log(isAuthenticated);
+		console.log('Check token here.');
 	}
 
 	return (

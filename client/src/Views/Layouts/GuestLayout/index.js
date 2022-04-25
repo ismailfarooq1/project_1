@@ -5,7 +5,6 @@ import './styles.css'
 import Footer from '../../../Components/Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../Redux/Actions/Auth'
-import Cookies from 'universal-cookie';
 
 const GuestLayout = ({ children }) => {
 
@@ -23,18 +22,7 @@ const GuestLayout = ({ children }) => {
     })
 
     const logoutButton = () => {
-
-        // let cookies = new Cookies();
-        // cookies.remove('authToken');
-
-        console.log('Logout');
         dispatch(logout())
-
-
-
-        // .then(() => {
-        //     // navigate('/');
-        // });
     }
 
     return (

@@ -7,15 +7,15 @@ import gulbergGreenLogo from '../../Assets/images/client-logos/gulberg-greens.pn
 import parkViewCity from '../../Assets/images/client-logos/park-view-city.png';
 import topCity from '../../Assets/images/client-logos/top-city.png';
 import './styles.css';
-import Cookies from 'universal-cookie';
+// import Cookies from 'universal-cookie';
 
 const Home = () => {
 
-	let cookies = new Cookies();
+	// let cookies = new Cookies();
 
 	useEffect(() => {
-		console.log('Home view');
-		console.log(cookies.get('authToken'));
+		// console.log('Home view');
+		// console.log(cookies.get('authToken'));
 	});
 
 	return (

@@ -3,7 +3,7 @@ import { axiosConstants } from '../../Config/constants';
 
 export const login = (data) => {
     return async (dispatch) => {
-        const response = await axios.post(axiosConstants.basePath + 'api/login', { email: data.email, password: data.password, password_confirmation: data.password_confirmation })
+        const response = await axios.post('api/login', { email: data.email, password: data.password, password_confirmation: data.password_confirmation })
         dispatch({
             type: 'admin/login',
             payload: response.data
@@ -12,12 +12,8 @@ export const login = (data) => {
 }
 
 export const logout = () => {
-
-    // console.log('logout axiosConstants.headers');
-    console.log(axiosConstants.headers);
-
     return async (dispatch) => {
-        const response = await axios.get(axiosConstants.basePath + 'api/logout', { headers: axiosConstants.headers })
+        const response = await axios.get('api/logout')
         dispatch({
             type: 'admin/logout',
             payload: response.data

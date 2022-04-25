@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import store from './Redux/index.js';
+import obj from './Redux/index.js';
+import { PersistGate } from 'redux-persist/integration/react'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
+    <Provider store={obj.store}>
+      <PersistGate loading={null} persistor={obj.persistor}>
+        <App />
+      </PersistGate>
     </Provider>
 
   </React.StrictMode>,
