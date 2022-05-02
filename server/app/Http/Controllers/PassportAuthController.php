@@ -63,9 +63,6 @@ class PassportAuthController extends Controller
     {
         $request->user()->token()->revoke();
 
-        // return $user;
         return response()->json(['user' => true], 200);
-        // $user->revoke();
-        // return true;
     }
 }

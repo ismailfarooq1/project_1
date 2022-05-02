@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
 import './styles.css';
 import logo from '../../Assets/images/logo2.png';
+import { logout } from '../../Redux/Actions/Auth'
+import { useDispatch } from 'react-redux';
 
 const AdminHeader = () => {
+
+    let dispatch = useDispatch();
+
+    const logoutButton = () => {
+        dispatch(logout())
+    }
+
     return (
         <header className="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar bg-dark">
             <a className="navbar-brand">
@@ -29,6 +38,7 @@ const AdminHeader = () => {
                     <li className="nav-item">
                         <a className="nav-link" href="https://blog.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
                     </li>
+                    <Link className='nav-link nav-link-right ms-auto' to='/' onClick={logoutButton}>Logout</Link>
                 </ul>
             </div>
 

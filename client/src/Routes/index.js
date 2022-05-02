@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import AdminLayout from '../Views/Layouts/AdminLayout';
 import AdminHome from '../Views/AdminHome';
 import store from '../Redux';
+import User from '../Views/User';
 
 const CheckAuth = ({ children }) => {
 	let isAuthenticated = useSelector((state) => {
@@ -48,6 +49,17 @@ const MyRoutes = () => {
 					<CheckAuth>
 						<AdminLayout>
 							<AdminHome />
+						</AdminLayout>
+					</CheckAuth>
+				}
+				exact
+			></Route>
+			<Route
+				path='/admin/users'
+				element={
+					<CheckAuth>
+						<AdminLayout>
+							<User />
 						</AdminLayout>
 					</CheckAuth>
 				}
